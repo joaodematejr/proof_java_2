@@ -53,7 +53,7 @@
 										</f:facet>
 
 										<h:link styleClass="btn btn-info btn-icon-split"
-											outcome="addModalities" value="" onclick="redirecionar();">
+											outcome="addClient" value="" onclick="redirecionar();">
 											<f:param name="id" value="#{item.id}" />
 											<span class="icon text-white-50"> <i
 												class="fas fa-pen"></i>
@@ -69,7 +69,7 @@
 										<h:form id="form">
 											<h:commandLink styleClass="btn btn-danger btn-icon-split"
 												onclick=" return confirm('Tem certeza da exclusão um ambiente #{item.name}');"
-												action="#{modalityMb.handleDelete(item.id)}" value="">
+												action="#{clientMb.handleDelete(item.id)}" value="">
 												<span class="icon text-white-50"> <i
 													class="fas fa-trash-alt"></i>
 												</span>

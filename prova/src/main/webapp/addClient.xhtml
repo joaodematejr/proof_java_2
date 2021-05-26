@@ -5,9 +5,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{clientMb.updateId}" />
+		<f:event listener="#{clientMb.uploadEdition}" type="preRenderView" />
+	</f:metadata>
 
 	<ui:define name="conteudo">
 		<div class="container-fluid">
@@ -16,7 +22,7 @@
 				<h1 class="h3 mb-4 text-gray-800">Cadastrar Cliente</h1>
 			</div>
 
-			<h:form>
+			<h:form id="form">
 				<div class="row">
 					<div class="col-xl-12 col-md-12 mb-12">
 						<h:messages styleClass="alert alert-info"
@@ -71,43 +77,46 @@
 										<div class="row">
 											<div class="col-xl-2 col-md-2 mb-2">
 												<label for="name" class="form-label">CEP</label>
-												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.cep}"
-													style="text-transform: capitalize" />
+												<h:inputText maxlength="8" class="form-control" id="cep-id"
+													style="text-transform: capitalize"
+													value="#{clientMb.client.cep}" mask="99999-999" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
 												<label for="name" class="form-label">Cidade</label>
 												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.city}"
+													type="text" value="#{clientMb.client.city}"
 													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
 												<label for="name" class="form-label">Estado</label>
 												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.state}"
+													type="text" value="#{clientMb.client.state}"
 													style="text-transform: capitalize" />
 											</div>
 										</div>
+
 										<div class="row">
 											<div class="col-xl-5 col-md-5 mb-5">
 												<label for="name" class="form-label">Bairro</label>
 												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.neighborhood}"
+													type="text" value="#{clientMb.client.neighborhood}"
 													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
 												<label for="name" class="form-label">Logradouro</label>
 												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.street}"
+													type="text" value="#{clientMb.client.street}"
 													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-2 col-md-2 mb-2">
-												<label for="name" class="form-label">Logradouro</label>
+												<label for="name" class="form-label">Número</label>
 												<h:inputText pt:placeholder="..." class="form-control"
-													type="text" value="#{clientMb.client.address.number}"
+													type="text" value="#{clientMb.client.number}"
 													style="text-transform: capitalize" />
 											</div>
+
 										</div>
+
 										<div class="row">
 											<div class="col-xl-12 col-md-12 mb-12">
 												<h:commandLink styleClass="btn btn-success btn-icon-split"

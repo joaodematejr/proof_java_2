@@ -18,6 +18,7 @@ public class ClientMb {
 	private ClientRn clientRn;
 	private List<Client> listClients;
 	public String count = "0";
+	private Long updateId;
 
 	@PostConstruct
 	public void init() {
@@ -43,17 +44,19 @@ public class ClientMb {
 
 	public String salvar() {
 		if (client.getName().length() == 0) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nome Vazio Burro !!!", ""));
-		}
-		else if (client.getRegistration().length() == 0) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Matrícula Vazio Burro !!!", ""));
-		}else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Nome Vazio Burro !!!", ""));
+		} else if (client.getRegistration().length() == 0) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Matrícula Vazio Burro !!!", ""));
+		} else {
 			clientRn.salvar(client);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns!!! Você conseguiu chegar até aqui, Salvou", ""));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Parabéns!!! Você conseguiu chegar até aqui, Salvou", ""));
 			client = new Client();
 		}
 		System.out.println(client.getModality());
-		return null;
+		return "listClients.xhtml";
 
 	}
 
@@ -78,9 +81,26 @@ public class ClientMb {
 	public void setCount(String count) {
 		this.count = count;
 	}
+
+	public String handleDelete(String id) {
+		Long idClient = Long.parseLong(id);
+		clientRn.delete(idClient);
+		return "listClients.xhtml";
+
+	}
+
+	public Long getUpdateId() {
+		return updateId;
+	}
+
+	public void setUpdateId(Long updateId) {
+		this.updateId = updateId;
+	}
 	
-	
-	
-	
-	
+	public void uploadEdition() {
+		if (updateId != null && !FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
+			client = clientRn.queryId(updateId);
+		}
+	}
+
 }

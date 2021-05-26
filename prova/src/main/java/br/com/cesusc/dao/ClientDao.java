@@ -9,8 +9,7 @@ import br.com.cesusc.model.Client;
 public class ClientDao extends Dao {
 
 	public Client queryForId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEM().find(Client.class, id);
 	}
 
 	public void save(Client client) {
@@ -29,6 +28,12 @@ public class ClientDao extends Dao {
 		// TODO Auto-generated method stub
 		Query query = getEM().createQuery("From Client", Client.class);//
 		return query.getResultList();
+	}
+
+	public void delete(Long idClient) {
+		Client client = getEM().getReference(Client.class, idClient);
+		getEM().remove(client);
+		
 	}
 
 }

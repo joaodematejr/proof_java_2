@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Client {
@@ -17,7 +18,9 @@ public class Client {
 	@Id
 	@GeneratedValue
 	private long id;
+	@NotNull
 	private String name;
+	@NotNull
 	private String registration;
 
 	@UpdateTimestamp
@@ -28,8 +31,15 @@ public class Client {
 	private Date lastSync;
 	@ManyToOne
 	private Modality modality;
-	@OneToOne
+	@ManyToOne
 	private Address address;
+
+	private String cep;
+	private String city;
+	private String state;
+	private String neighborhood;
+	private String street;
+	private int number;
 
 	public long getId() {
 		return id;
@@ -95,16 +105,70 @@ public class Client {
 		this.address = address;
 	}
 
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getNeighborhood() {
+		return neighborhood;
+	}
+
+	public void setNeighborhood(String neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lastSync == null) ? 0 : lastSync.hashCode());
 		result = prime * result + ((modality == null) ? 0 : modality.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((neighborhood == null) ? 0 : neighborhood.hashCode());
+		result = prime * result + number;
 		result = prime * result + ((registration == null) ? 0 : registration.hashCode());
+		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		result = prime * result + ((timeCreation == null) ? 0 : timeCreation.hashCode());
 		result = prime * result + ((timeModification == null) ? 0 : timeModification.hashCode());
 		return result;
@@ -124,6 +188,16 @@ public class Client {
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
 		if (id != other.id)
 			return false;
 		if (lastSync == null) {
@@ -141,10 +215,27 @@ public class Client {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (neighborhood == null) {
+			if (other.neighborhood != null)
+				return false;
+		} else if (!neighborhood.equals(other.neighborhood))
+			return false;
+		if (number != other.number)
+			return false;
 		if (registration == null) {
 			if (other.registration != null)
 				return false;
 		} else if (!registration.equals(other.registration))
+			return false;
+		if (state == null) {
+			if (other.state != null)
+				return false;
+		} else if (!state.equals(other.state))
+			return false;
+		if (street == null) {
+			if (other.street != null)
+				return false;
+		} else if (!street.equals(other.street))
 			return false;
 		if (timeCreation == null) {
 			if (other.timeCreation != null)
@@ -157,13 +248,6 @@ public class Client {
 		} else if (!timeModification.equals(other.timeModification))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", name=" + name + ", registration=" + registration + ", timeModification="
-				+ timeModification + ", timeCreation=" + timeCreation + ", lastSync=" + lastSync + ", modality="
-				+ modality + ", address=" + address + "]";
 	}
 
 }

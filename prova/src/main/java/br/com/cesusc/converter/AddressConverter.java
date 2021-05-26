@@ -5,23 +5,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import br.com.cesusc.model.Client;
-import br.com.cesusc.rn.ClientRn;
+import br.com.cesusc.model.Address;
+import br.com.cesusc.rn.AddressRn;
 
-@FacesConverter(forClass = Client.class)
-public class ClientConverter implements Converter {
+@FacesConverter(forClass = Address.class)
+public class AddressConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
-		ClientRn clienteRn = new ClientRn();
+		AddressRn addressRn = new AddressRn();
 		Long id = Long.parseLong(value);
-		return clienteRn.queryId(id);
+		return addressRn.buscarPorId(id);
 	}
 
 	@Override
 	public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object value) {
-		Client client = (Client) value;
-		return String.valueOf(client.getId());
+		Address address = (Address) value;
+		return String.valueOf(address.getId());
 	}
 
 }
