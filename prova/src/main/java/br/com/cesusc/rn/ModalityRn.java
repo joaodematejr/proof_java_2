@@ -14,10 +14,6 @@ public class ModalityRn extends Dao {
 		dao = new ModalityDao();
 	}
 
-	public Object buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void salvar(Modality modality) {
 		dao.save(modality);
@@ -25,6 +21,15 @@ public class ModalityRn extends Dao {
 
 	public List<Modality> listModalitys() {
 		return dao.listModalitys();
+	}
+
+	public void delete(Long idModality) {
+		dao.delete(idModality);
+
+	}
+
+	public Modality queryId(Long updateId) {
+		return dao.queryForId(updateId);
 	}
 
 }

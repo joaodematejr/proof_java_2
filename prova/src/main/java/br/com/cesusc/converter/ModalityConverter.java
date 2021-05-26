@@ -15,7 +15,7 @@ public class ModalityConverter implements Converter {
 	public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
 		ModalityRn modalityRn = new ModalityRn();
 		Long id = Long.parseLong(value);
-		return modalityRn.buscarPorId(id);
+		return modalityRn.queryId(id);
 	}
 
 	@Override

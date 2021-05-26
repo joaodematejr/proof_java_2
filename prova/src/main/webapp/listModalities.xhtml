@@ -45,25 +45,32 @@
 										<f:facet name="header">
 											<h:outputText value="Ação 1" />
 										</f:facet>
-										<h:commandLink styleClass="btn btn-info btn-icon-split"
-											action="#{clientMb.salvar}" value="">
+		
+										<h:link styleClass="btn btn-info btn-icon-split"
+											outcome="addModalities" value=""
+											onclick="redirecionar();">
+											<f:param name="id" value="#{item.id}" />
 											<span class="icon text-white-50"> <i
 												class="fas fa-pen"></i>
 											</span>
 											<span class="text">Atualizar</span>
-										</h:commandLink>
+										</h:link>
+
 									</h:column>
 									<h:column styleClass="text-center">
 										<f:facet name="header">
 											<h:outputText value="Ação 2" />
 										</f:facet>
-										<h:commandLink styleClass="btn btn-danger btn-icon-split"
-											action="#{clientMb.salvar}" value="">
-											<span class="icon text-white-50"> <i
-												class="fas fa-trash-alt"></i>
-											</span>
-											<span class="text">Deletar</span>
-										</h:commandLink>
+										<h:form id="form">
+											<h:commandLink styleClass="btn btn-danger btn-icon-split"
+												onclick=" return confirm('Tem certeza da exclusão um ambiente #{item.description}');"
+												action="#{modalityMb.handleDelete(item.id)}" value="">
+												<span class="icon text-white-50"> <i
+													class="fas fa-trash-alt"></i>
+												</span>
+												<span class="text">Deletar</span>
+											</h:commandLink>
+										</h:form>
 									</h:column>
 								</h:dataTable>
 							</div>

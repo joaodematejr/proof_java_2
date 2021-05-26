@@ -4,9 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
+
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{modalityMb.updateId}" />
+		<f:event listener="#{modalityMb.uploadEdition}" type="preRenderView" />
+	</f:metadata>
 
 	<ui:define name="conteudo">
 		<div class="container-fluid">
@@ -16,6 +23,7 @@
 			</div>
 
 			<h:form>
+				<h:inputHidden value="#{modalityMb.modality.id}" />
 				<div class="row">
 					<div class="col-xl-12 col-md-12 mb-12">
 						<h:messages styleClass="alert alert-info"

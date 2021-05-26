@@ -2,6 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
@@ -40,7 +41,11 @@
 									<div
 										class="text-xs font-weight-bold text-success text-uppercase mb-1">
 										Modalidades</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+										<h:form id="form">
+											<h:outputText value="#{modalityMb.count}" />
+										</h:form>
+									</div>
 								</div>
 								<div class="col-auto">
 									<i class="fas fa-dumbbell fa-2x text-gray-300"></i>

@@ -17,6 +17,8 @@ public class ModalityMb {
 	private Modality modality;
 	private ModalityRn modalityRn;
 	private List<Modality> listModalitys;
+	private Long updateId;
+	public String count = "0";
 
 	@PostConstruct
 	public void init() {
@@ -50,7 +52,7 @@ public class ModalityMb {
 					"Parabéns!!! Você conseguiu chegar até aqui, Salvou", ""));
 			modality = new Modality();
 		}
-		return null;
+		return "listModalities.xhtml";
 
 	}
 
@@ -58,12 +60,47 @@ public class ModalityMb {
 		if (listModalitys == null) {
 			listModalitys = modalityRn.listModalitys();
 		}
-		System.out.println(listModalitys);
 		return listModalitys;
 	}
 
 	public void setListModalitys(List<Modality> listModalitys) {
 		this.listModalitys = listModalitys;
+	}
+
+	public String handleDelete(String id) {
+		Long idModalityRn = Long.parseLong(id);
+		modalityRn.delete(idModalityRn);
+		return "listModalities.xhtml";
+
+	}
+
+	public Long getUpdateId() {
+		return updateId;
+	}
+
+	public void setUpdateId(Long updateId) {
+		this.updateId = updateId;
+	}
+
+	public void uploadEdition() {
+		if (updateId != null && !FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
+			modality = modalityRn.queryId(updateId);
+		}
+	}
+
+	public String getCount() {
+		if (listModalitys == null) {
+			listModalitys = modalityRn.listModalitys();
+		}
+		return Integer.toString(listModalitys.size());
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	public void setModality(Modality modality) {
+		this.modality = modality;
 	}
 
 }
