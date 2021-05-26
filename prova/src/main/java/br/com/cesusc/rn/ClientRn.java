@@ -25,8 +25,10 @@ public class ClientRn {
 		return dao.queryForRegistration(registration);
 	}
 	
-	public List<Client> listClient() {
-		return dao.listClient();
+
+	public List<Client> listClients() {
+		// TODO Auto-generated method stub
+		return dao.listClients();
 	}
 
 }

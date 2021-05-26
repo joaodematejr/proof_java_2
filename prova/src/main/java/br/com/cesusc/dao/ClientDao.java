@@ -2,6 +2,8 @@ package br.com.cesusc.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import br.com.cesusc.model.Client;
 
 public class ClientDao extends Dao {
@@ -21,9 +23,12 @@ public class ClientDao extends Dao {
 		return null;
 	}
 
-	public List<Client> listClient() {
+
+	@SuppressWarnings("unchecked")
+	public List<Client> listClients() {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = getEM().createQuery("From Client", Client.class);//
+		return query.getResultList();
 	}
 
 }

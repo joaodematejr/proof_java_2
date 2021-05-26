@@ -44,8 +44,8 @@
 													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-4 col-md-4 mb-4">
-												<label for="name" class="form-label">Modalidade</label> 
-												
+												<label for="name" class="form-label">Modalidade</label>
+
 												<h:selectOneMenu required="true"
 													requiredMessage="A Modalidade é obrigatório!"
 													styleClass="form-control"
@@ -70,36 +70,42 @@
 									<div class="col-xl-12 col-md-12 mb-12">
 										<div class="row">
 											<div class="col-xl-2 col-md-2 mb-2">
-												<label for="name" class="form-label">CEP</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">CEP</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.cep}"
+													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
-												<label for="name" class="form-label">Cidade</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">Cidade</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.city}"
+													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
-												<label for="name" class="form-label">Estado</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">Estado</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.state}"
+													style="text-transform: capitalize" />
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-xl-5 col-md-5 mb-5">
-												<label for="name" class="form-label">Bairro</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">Bairro</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.neighborhood}"
+													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-5 col-md-5 mb-5">
-												<label for="name" class="form-label">Logradouro</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">Logradouro</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.street}"
+													style="text-transform: capitalize" />
 											</div>
 											<div class="col-xl-2 col-md-2 mb-2">
-												<label for="name" class="form-label">Número</label> <input
-													type="text" class="form-control" id="name"
-													aria-describedby="name" />
+												<label for="name" class="form-label">Logradouro</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.address.number}"
+													style="text-transform: capitalize" />
 											</div>
 										</div>
 										<div class="row">

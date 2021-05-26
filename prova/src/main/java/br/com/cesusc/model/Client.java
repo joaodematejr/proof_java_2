@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,56 +28,78 @@ public class Client {
 	private Date lastSync;
 	@ManyToOne
 	private Modality modality;
-	
+	@OneToOne
+	private Address address;
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getRegistration() {
 		return registration;
 	}
+
 	public void setRegistration(String registration) {
 		this.registration = registration;
 	}
+
 	public Date getTimeModification() {
 		return timeModification;
 	}
+
 	public void setTimeModification(Date timeModification) {
 		this.timeModification = timeModification;
 	}
+
 	public Date getTimeCreation() {
 		return timeCreation;
 	}
+
 	public void setTimeCreation(Date timeCreation) {
 		this.timeCreation = timeCreation;
 	}
+
 	public Date getLastSync() {
 		return lastSync;
 	}
+
 	public void setLastSync(Date lastSync) {
 		this.lastSync = lastSync;
 	}
-	
+
 	public Modality getModality() {
 		return modality;
 	}
-	
+
 	public void setModality(Modality modality) {
 		this.modality = modality;
 	}
-	
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((lastSync == null) ? 0 : lastSync.hashCode());
 		result = prime * result + ((modality == null) ? 0 : modality.hashCode());
@@ -86,6 +109,7 @@ public class Client {
 		result = prime * result + ((timeModification == null) ? 0 : timeModification.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -95,6 +119,11 @@ public class Client {
 		if (getClass() != obj.getClass())
 			return false;
 		Client other = (Client) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
 		if (id != other.id)
 			return false;
 		if (lastSync == null) {
@@ -129,5 +158,12 @@ public class Client {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", registration=" + registration + ", timeModification="
+				+ timeModification + ", timeCreation=" + timeCreation + ", lastSync=" + lastSync + ", modality="
+				+ modality + ", address=" + address + "]";
+	}
+
 }

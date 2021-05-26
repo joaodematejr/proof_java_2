@@ -1,5 +1,7 @@
 package br.com.cesusc.mb;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +16,8 @@ import br.com.cesusc.rn.ClientRn;
 public class ClientMb {
 	private Client client;
 	private ClientRn clientRn;
+	private List<Client> listClients;
+	public String count = "0";
 
 	@PostConstruct
 	public void init() {
@@ -53,4 +57,30 @@ public class ClientMb {
 
 	}
 
+	public List<Client> getListClients() {
+		if (listClients == null) {
+			listClients = clientRn.listClients();
+		}
+		return listClients;
+	}
+
+	public void setListClients(List<Client> listClients) {
+		this.listClients = listClients;
+	}
+
+	public String getCount() {
+		if (listClients == null) {
+			listClients = clientRn.listClients();
+		}
+		return Integer.toString(listClients.size());
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+	
+	
+	
+	
+	
 }
