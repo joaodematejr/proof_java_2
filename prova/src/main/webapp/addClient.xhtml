@@ -2,6 +2,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
@@ -10,14 +13,113 @@
 		<div class="container-fluid">
 			<!-- Page Heading -->
 			<div class="row">
-				<h1 class="h3 mb-4 text-gray-800">Cadastrar Clientes</h1>
+				<h1 class="h3 mb-4 text-gray-800">Cadastrar Cliente</h1>
 			</div>
 
-			<div class="row">
-				
+			<h:form>
+				<div class="row">
+					<div class="col-xl-12 col-md-12 mb-12">
+						<h:messages styleClass="alert alert-info"
+							style="list-style-type: none;"></h:messages>
+						<!-- INFORMAÇÕES CLIENTES -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">Informações</h6>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xl-12 col-md-12 mb-12">
+										<div class="row">
+											<div class="col-xl-4 col-md-4 mb-4">
+												<label for="name" class="form-label">Nome</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.name}"
+													style="text-transform: capitalize" />
 
-				
-			</div>
+											</div>
+											<div class="col-xl-4 col-md-4 mb-4">
+												<label for="name" class="form-label">Matrícula</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{clientMb.client.registration}"
+													style="text-transform: capitalize" />
+											</div>
+											<div class="col-xl-4 col-md-4 mb-4">
+												<label for="name" class="form-label">Modalidade</label> 
+												
+												<h:selectOneMenu required="true"
+													requiredMessage="A Modalidade é obrigatório!"
+													styleClass="form-control"
+													value="#{clientMb.client.modality}">
+													<f:selectItems value="#{modalityMb.listModalitys}"
+														var="modality" itemLabel="#{modality.description}"
+														itemValue="#{modality}" />
+												</h:selectOneMenu>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ENDEREÇO CLIENTES -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">Endereço</h6>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xl-12 col-md-12 mb-12">
+										<div class="row">
+											<div class="col-xl-2 col-md-2 mb-2">
+												<label for="name" class="form-label">CEP</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+											<div class="col-xl-5 col-md-5 mb-5">
+												<label for="name" class="form-label">Cidade</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+											<div class="col-xl-5 col-md-5 mb-5">
+												<label for="name" class="form-label">Estado</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xl-5 col-md-5 mb-5">
+												<label for="name" class="form-label">Bairro</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+											<div class="col-xl-5 col-md-5 mb-5">
+												<label for="name" class="form-label">Logradouro</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+											<div class="col-xl-2 col-md-2 mb-2">
+												<label for="name" class="form-label">Número</label> <input
+													type="text" class="form-control" id="name"
+													aria-describedby="name" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xl-12 col-md-12 mb-12">
+												<h:commandLink styleClass="btn btn-success btn-icon-split"
+													action="#{clientMb.salvar}" value="">
+													<span class="icon text-white-50"> <i
+														class="fas fa-save"></i>
+													</span>
+													<span class="text">Salvar</span>
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
 		</div>
 
 	</ui:define>

@@ -7,6 +7,7 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.cesusc.model.Client</class>
+		<class>br.com.cesusc.model.Modality</class>
 	
 		<properties>
 			<!-- dados da conexao -->

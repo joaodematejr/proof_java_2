@@ -12,7 +12,7 @@ public class ClientDao extends Dao {
 	}
 
 	public void save(Client client) {
-		// TODO Auto-generated method stub
+		getEM().merge(client);
 
 	}
 

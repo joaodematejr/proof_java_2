@@ -2,6 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
@@ -13,11 +15,48 @@
 				<h1 class="h3 mb-4 text-gray-800">Cadastrar Modalidades</h1>
 			</div>
 
-			<div class="row">
-				
+			<h:form>
+				<div class="row">
+					<div class="col-xl-12 col-md-12 mb-12">
+						<h:messages styleClass="alert alert-info"
+							style="list-style-type: none;"></h:messages>
+						<!-- INFORMAÇÕES CLIENTES -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">Informações</h6>
+							</div>
 
-				
-			</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xl-12 col-md-12 mb-12">
+										<div class="row">
+											<div class="col-xl-12 col-md-12 mb-12">
+												<label for="name" class="form-label">Descrição</label>
+												<h:inputText pt:placeholder="..." class="form-control"
+													type="text" value="#{modalityMb.modality.description}"
+													style="text-transform: capitalize" />
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<br />
+								<div class="row">
+									<div class="col-xl-12 col-md-12 mb-12">
+										<h:commandLink styleClass="btn btn-success btn-icon-split"
+											action="#{modalityMb.salvar()}" value="">
+											<span class="icon text-white-50"> <i
+												class="fas fa-save"></i>
+											</span>
+											<span class="text">Salvar</span>
+										</h:commandLink>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:form>
 		</div>
 
 	</ui:define>

@@ -2,6 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/template.xhtml">
@@ -14,9 +16,60 @@
 			</div>
 
 			<div class="row">
-				
+				<div class="col-xl-12 col-md-12 mb-12">
 
-				
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Modalidades</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+
+
+								<h:dataTable class="table table-bordered" width="100%"
+									cellspacing="0" id="items" value="#{modalityMb.listModalitys}"
+									var="item">
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Codigo" />
+										</f:facet>
+										<h:outputText value="#{item.id}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">
+											<h:outputText value="Descrição" />
+										</f:facet>
+										<h:outputText value="#{item.description}" />
+									</h:column>
+									<h:column styleClass="text-center">
+										<f:facet name="header">
+											<h:outputText value="Ação 1" />
+										</f:facet>
+										<h:commandLink styleClass="btn btn-info btn-icon-split"
+											action="#{clientMb.salvar}" value="">
+											<span class="icon text-white-50"> <i
+												class="fas fa-pen"></i>
+											</span>
+											<span class="text">Atualizar</span>
+										</h:commandLink>
+									</h:column>
+									<h:column styleClass="text-center">
+										<f:facet name="header">
+											<h:outputText value="Ação 2" />
+										</f:facet>
+										<h:commandLink styleClass="btn btn-danger btn-icon-split"
+											action="#{clientMb.salvar}" value="">
+											<span class="icon text-white-50"> <i
+												class="fas fa-trash-alt"></i>
+											</span>
+											<span class="text">Deletar</span>
+										</h:commandLink>
+									</h:column>
+								</h:dataTable>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
